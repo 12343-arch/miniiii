@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شخصيات بارزة من محافظة المنيا</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="personalities.css">
+</head>
+<body>
+    <!-- Header & Navigation (same across all pages) -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار محافظة المنيا">
+            <h1>محافظة المنيا</h1>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="personalities.html" class="active">شخصيات بارزة</a></li>
+                <li><a href="attractions.html">المعالم السياحية</a></li>
+                <li><a href="map.html">خريطة المحافظة</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="schools.html">دليل المدارس</a></li>
+                <li><a href="education.html">التعليم العالي</a></li>
+                <li><a href="jobs.html">فرص العمل</a></li>
+                <li><a href="culture.html">الثقافة والفنون</a></li>
+                <li><a href="services.html">الخدمات الإلكترونية</a></li>
+                <li><a href="agriculture.html">الزراعة والصناعة</a></li>
+                <li><a href="forum.html">منتدى المجتمع</a></li>
+                <li><a href="events.html">الإعلانات والأحداث</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="ابحث في الموقع..." id="site-search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="container">
+        <section class="page-header">
+            <h1>شخصيات بارزة من محافظة المنيا</h1>
+            <p class="intro-text">
+                تُعد محافظة المنيا مهداً للعديد من الشخصيات البارزة التي أثرت في التاريخ المصري والعربي عبر مختلف المجالات. كموطن للحضارة المصرية القديمة والتراث الثقافي العريق، قدمت المنيا للعالم شخصيات استثنائية في مجالات الأدب والفن والسياسة والرياضة والعلوم.
+            </p>
+        </section>
+
+        <!-- Category Filter -->
+        <section class="filter-section">
+            <h2>تصفية حسب المجال</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="أدب">الأدب</button>
+                <button class="filter-btn" data-filter="سياسة">السياسة</button>
+                <button class="filter-btn" data-filter="عسكري">العسكرية</button>
+                <button class="filter-btn" data-filter="فن">الفن</button>
+                <button class="filter-btn" data-filter="رياضة">الرياضة</button>
+            </div>
+        </section>
+
+        <!-- Personalities Grid -->
+        <section class="personalities-grid" id="personalities-container">
+            <!-- Personalities will be loaded dynamically via JavaScript -->
+        </section>
+    </main>
+
+    <!-- Footer (same across all pages) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>محافظة المنيا</h3>
+                <p>بوابة إلكترونية شاملة لخدمة مواطني وزوار محافظة المنيا</p>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ديوان عام محافظة المنيا، المنيا، مصر</p>
+                <p><i class="fas fa-phone"></i> 086-2343001</p>
+                <p><i class="fas fa-envelope"></i> info@minia-portal.gov.eg</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2023 بوابة محافظة المنيا</p>
+        </div>
+    </footer>
+
+    <script src="personalities.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

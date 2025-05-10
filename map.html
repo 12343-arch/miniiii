@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خريطة محافظة المنيا</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header & Navigation (same across all pages) -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار محافظة المنيا">
+            <h1>محافظة المنيا</h1>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="personalities.html">شخصيات بارزة</a></li>
+                <li><a href="attractions.html">المعالم السياحية</a></li>
+                <li><a href="map.html" class="active">خريطة المحافظة</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="schools.html">دليل المدارس</a></li>
+                <li><a href="education.html">التعليم العالي</a></li>
+                <li><a href="jobs.html">فرص العمل</a></li>
+                <li><a href="culture.html">الثقافة والفنون</a></li>
+                <li><a href="services.html">الخدمات الإلكترونية</a></li>
+                <li><a href="agriculture.html">الزراعة والصناعة</a></li>
+                <li><a href="forum.html">منتدى المجتمع</a></li>
+                <li><a href="events.html">الإعلانات والأحداث</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="ابحث في الموقع..." id="site-search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main>
+        <section class="page-header">
+            <h1>خريطة محافظة المنيا</h1>
+            <p class="intro-text">
+                استكشف مراكز ومدن محافظة المنيا من خلال الخريطة التفاعلية. تتكون المحافظة من ثمانية مراكز إدارية رئيسية، انقر على أي مركز للاطلاع على معلوماته التفصيلية.
+            </p>
+        </section>
+
+        <section class="map-section">
+            <div class="map-container">
+                <div id="minya-map"></div>
+                <div class="map-info-panel" id="info-panel">
+                    <div class="info-default">
+                        <h3>محافظة المنيا</h3>
+                        <p>انقر على أي مركز في الخريطة لعرض معلوماته</p>
+                    </div>
+                    <div class="info-content" id="info-content" style="display: none;">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="centers-overview">
+            <h2>مراكز محافظة المنيا</h2>
+            <div class="centers-grid" id="centers-grid">
+                <!-- Centers will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same across all pages) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>محافظة المنيا</h3>
+                <p>بوابة إلكترونية شاملة لخدمة مواطني وزوار محافظة المنيا</p>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ديوان عام محافظة المنيا، المنيا، مصر</p>
+                <p><i class="fas fa-phone"></i> 086-2343001</p>
+                <p><i class="fas fa-envelope"></i> info@minia-portal.gov.eg</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2023 بوابة محافظة المنيا</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="map.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

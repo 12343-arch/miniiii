@@ -1,0 +1,172 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محافظة المنيا - البوابة الرسمية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="timeline.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار محافظة المنيا">
+            <h1>محافظة المنيا</h1>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="personalities.html">شخصيات بارزة</a></li>
+                <li><a href="attractions.html">المعالم السياحية</a></li>
+                <li><a href="map.html">خريطة المحافظة</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="schools.html">دليل المدارس</a></li>
+                <li><a href="timeline.html">آلة الزمن التاريخية</a></li>
+                <li><a href="jobs.html">المنيا توظف</a></li>
+                <li><a href="eye-of-minya.html">عين المنيا</a></li>
+                <li><a href="dialected_quiz.html">اختبر لهجتك المنياوية</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="ابحث في الموقع..." id="site-search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>أهلاً بكم في بوابة محافظة المنيا</h1>
+            <p>عروس الصعيد ومهد الحضارة المصرية</p>
+            <a href="#explore" class="btn">استكشف المحافظة</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section id="explore" class="featured-sections">
+            <h2>استكشف محافظة المنيا</h2>
+            <div class="section-grid">
+                <div class="section-card">
+                    <img src="personalities-thumb.png" alt="شخصيات بارزة">
+                    <h3>شخصيات بارزة</h3>
+                    <p>تعرف على مشاهير ورموز المنيا عبر التاريخ</p>
+                    <a href="personalities.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="attractions-thumb.png" alt="معالم سياحية">
+                    <h3>المعالم السياحية</h3>
+                    <p>اكتشف آثار وأماكن سياحية فريدة في المنيا</p>
+                    <a href="attractions.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="map-thumb.png" alt="خريطة المحافظة">
+                    <h3>خريطة المحافظة</h3>
+                    <p>تنقل بين مراكز ومدن المحافظة الثمانية</p>
+                    <a href="map.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="news-thumb.png" alt="آخر الأخبار">
+                    <h3>آخر الأخبار</h3>
+                    <p>تابع أحدث الأخبار والفعاليات في المنيا</p>
+                    <a href="news.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="schools-thumb.png" alt="دليل المدارس">
+                    <h3>دليل المدارس</h3>
+                    <p>تصفح مدارس محافظة المنيا بمختلف أنواعها ومراحلها</p>
+                    <a href="schools.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="timeline-thumb.png" alt="آلة الزمن التاريخية">
+                    <h3>آلة الزمن التاريخية</h3>
+                    <p>اكتشف تاريخ المنيا الغني عبر العصور المختلفة</p>
+                    <a href="timeline.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="jobs-thumb.png" alt="فرص العمل">
+                    <h3>المنيا توظف</h3>
+                    <p>ابحث عن فرص العمل والتدريب في المحافظة</p>
+                    <a href="jobs.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="map-thumb.png" alt="عين المنيا">
+                    <h3>عين المنيا</h3>
+                    <p>نظام إبلاغ ذكي للمشكلات والأزمات في محافظة المنيا</p>
+                    <a href="eye-of-minya.html" class="btn-small">استكشف</a>
+                </div>
+                <div class="section-card">
+                    <img src="hieroglyph-pattern.png" alt="اختبر لهجتك المنياوية">
+                    <h3>اختبر لهجتك المنياوية</h3>
+                    <p>اختبر معلوماتك عن الكلمات والتعبيرات في لهجة أهل المنيا</p>
+                    <a href="dialected_quiz.html" class="btn-small">ابدأ الاختبار</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="latest-news">
+            <h2>أحدث الأخبار</h2>
+            <div class="news-container">
+                <!-- News items will be dynamically loaded -->
+            </div>
+            <a href="news.html" class="btn-view-all">عرض جميع الأخبار</a>
+        </section>
+    </main>
+
+    <!-- Chat Bot -->
+    <div class="chat-bot-container" id="chat-bot-container">
+        <div class="chat-bot-header">
+            <img src="logo.png" alt="منيا AI" class="chat-bot-logo">
+            <h3>منيا AI</h3>
+            <button id="close-chat-bot"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chat-input" placeholder="اكتب سؤالك هنا...">
+            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chat-bot-toggle" id="chat-bot-toggle">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>محافظة المنيا</h3>
+                <p>بوابة إلكترونية شاملة لخدمة مواطني وزوار محافظة المنيا</p>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ديوان عام محافظة المنيا، المنيا، مصر</p>
+                <p><i class="fas fa-phone"></i> 086-2343001</p>
+                <p><i class="fas fa-envelope"></i> info@minia-portal.gov.eg</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2023 بوابة محافظة المنيا</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

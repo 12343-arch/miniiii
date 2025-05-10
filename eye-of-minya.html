@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عين المنيا - نظام الإبلاغ المبكر عن المشكلات</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="eye-of-minya.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <!-- Header & Navigation (same as other pages) -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار محافظة المنيا">
+            <h1>محافظة المنيا</h1>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="personalities.html">شخصيات بارزة</a></li>
+                <li><a href="attractions.html">المعالم السياحية</a></li>
+                <li><a href="map.html">خريطة المحافظة</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="schools.html">دليل المدارس</a></li>
+                <li><a href="timeline.html">آلة الزمن التاريخية</a></li>
+                <li><a href="jobs.html">المنيا توظف</a></li>
+                <li><a href="eye-of-minya.html" class="active">عين المنيا</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="ابحث في الموقع..." id="site-search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>عين المنيا</h1>
+            <p class="intro-text">
+                نظام ذكي يعمل كنقطة إنذار مبكر للمشكلات اليومية التي تواجه المواطنين في محافظة المنيا، يستخدم الذكاء الاصطناعي والمشاركة المجتمعية لرصد الأزمات أولًا بأول.
+            </p>
+        </section>
+
+        <div class="eye-dashboard">
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-reports">0</h3>
+                        <p>إجمالي عدد البلاغات</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="top-area">-</h3>
+                        <p>أكثر منطقة بها مشاكل</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="solved-percentage">0%</h3>
+                        <p>نسبة البلاغات المحلولة</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-actions">
+                <button id="report-problem-btn" class="btn primary-btn">
+                    <i class="fas fa-plus-circle"></i> أبلغ عن مشكلة
+                </button>
+                <button id="view-map-btn" class="btn secondary-btn">
+                    <i class="fas fa-map"></i> شاهد خريطة المشكلات الحية
+                </button>
+            </div>
+
+            <div class="map-container" id="problems-map">
+                <!-- Map will be initialized by JavaScript -->
+            </div>
+
+            <div class="dashboard-filters">
+                <div class="filter-group">
+                    <label for="problem-type-filter">نوع المشكلة:</label>
+                    <select id="problem-type-filter">
+                        <option value="all">الكل</option>
+                        <option value="roads">طرق</option>
+                        <option value="electricity">كهرباء</option>
+                        <option value="water">مياه</option>
+                        <option value="traffic">مرور</option>
+                        <option value="schools">مدارس</option>
+                        <option value="prices">أسعار</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="area-filter">المنطقة:</label>
+                    <select id="area-filter">
+                        <option value="all">الكل</option>
+                        <option value="minya-city">مدينة المنيا</option>
+                        <option value="new-minya">المنيا الجديدة</option>
+                        <option value="mallawi">ملوي</option>
+                        <option value="samalut">سمالوط</option>
+                        <option value="matay">مطاي</option>
+                        <option value="beni-mazar">بني مزار</option>
+                        <option value="maghagha">مغاغة</option>
+                        <option value="deir-mawas">دير مواس</option>
+                        <option value="abu-qurqas">أبو قرقاص</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="severity-filter">مستوى الخطورة:</label>
+                    <select id="severity-filter">
+                        <option value="all">الكل</option>
+                        <option value="low">منخفض</option>
+                        <option value="medium">متوسط</option>
+                        <option value="high">عاجل</option>
+                    </select>
+                </div>
+
+                <div class="search-group">
+                    <input type="text" id="report-search" placeholder="بحث في البلاغات...">
+                    <button id="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="reports-list" id="reports-list">
+                <!-- Reports will be loaded dynamically -->
+                <div class="no-reports" id="no-reports">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>لا توجد بلاغات حتى الآن</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Report Problem Modal -->
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>الإبلاغ عن مشكلة</h2>
+            <form id="report-form">
+                <div class="form-group">
+                    <label for="problem-type">نوع المشكلة:</label>
+                    <select id="problem-type" required>
+                        <option value="" disabled selected>اختر نوع المشكلة</option>
+                        <option value="roads">طرق مكسورة</option>
+                        <option value="electricity">أعمدة إنارة تالفة</option>
+                        <option value="water">نقص مياه</option>
+                        <option value="traffic">تكدس مروري</option>
+                        <option value="schools">مشكلة مدرسية</option>
+                        <option value="prices">ارتفاع أسعار</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="other-problem-container" style="display: none;">
+                    <label for="other-problem">حدد نوع المشكلة:</label>
+                    <input type="text" id="other-problem" placeholder="اكتب نوع المشكلة">
+                </div>
+
+                <div class="form-group">
+                    <label for="problem-location">العنوان الدقيق أو اسم المنطقة:</label>
+                    <input type="text" id="problem-location" required placeholder="مثال: شارع النصر - مدينة المنيا">
+                </div>
+
+                <div class="form-group">
+                    <label for="problem-description">وصف المشكلة:</label>
+                    <textarea id="problem-description" rows="3" placeholder="اشرح المشكلة بالتفصيل..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="problem-severity">مدى خطورة المشكلة:</label>
+                    <select id="problem-severity" required>
+                        <option value="low">خفيفة</option>
+                        <option value="medium" selected>متوسطة</option>
+                        <option value="high">عاجلة</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="problem-image">صورة توضيحية (اختياري):</label>
+                    <input type="file" id="problem-image" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="reporter-contact">معلومات الاتصال (اختياري):</label>
+                    <input type="text" id="reporter-contact" placeholder="رقم الهاتف أو البريد الإلكتروني">
+                </div>
+
+                <button type="submit" class="btn primary-btn">إرسال البلاغ</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer (same as other pages) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>محافظة المنيا</h3>
+                <p>بوابة إلكترونية شاملة لخدمة مواطني وزوار محافظة المنيا</p>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ديوان عام محافظة المنيا، المنيا، مصر</p>
+                <p><i class="fas fa-phone"></i> 086-2343001</p>
+                <p><i class="fas fa-envelope"></i> info@minia-portal.gov.eg</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2023 بوابة محافظة المنيا</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="eye-of-minya.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

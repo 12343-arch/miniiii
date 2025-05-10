@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبر لهجتك المنياوية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dialected_quiz.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار محافظة المنيا">
+            <h1>محافظة المنيا</h1>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="personalities.html">شخصيات بارزة</a></li>
+                <li><a href="attractions.html">المعالم السياحية</a></li>
+                <li><a href="map.html">خريطة المحافظة</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="schools.html">دليل المدارس</a></li>
+                <li><a href="timeline.html">آلة الزمن التاريخية</a></li>
+                <li><a href="jobs.html">المنيا توظف</a></li>
+                <li><a href="eye-of-minya.html">عين المنيا</a></li>
+                <li><a href="dialected_quiz.html" class="active">اختبر لهجتك المنياوية</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="ابحث في الموقع..." id="site-search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="quiz-intro" id="quiz-intro">
+            <h1>اختبر لهجتك المنياوية</h1>
+            <div class="quiz-decoration">
+                <img src="hieroglyph-pattern.png" alt="زخارف منياوية" class="decoration-img">
+            </div>
+            <p class="intro-text">
+                هل تعتقد أنك تجيد اللهجة المنياوية الأصيلة؟ اختبر معلوماتك من خلال 20 سؤال عن الكلمات والتعبيرات المستخدمة في لهجة أهل المنيا. في نهاية الاختبار ستعرف مدى إتقانك للهجة عروس الصعيد!
+            </p>
+            <button id="start-quiz-btn" class="btn">ابدأ الاختبار</button>
+        </section>
+
+        <section class="quiz-container" id="quiz-container" style="display: none;">
+            <div class="quiz-header">
+                <h2>اختبر لهجتك المنياوية</h2>
+                <div class="quiz-progress">
+                    <span id="current-question">1</span> / <span id="total-questions">20</span>
+                </div>
+            </div>
+
+            <div class="question-container" id="question-container">
+                <!-- Questions will be loaded dynamically -->
+            </div>
+
+            <div class="quiz-controls">
+                <button id="prev-btn" class="nav-btn" disabled>
+                    <i class="fas fa-arrow-right"></i> السابق
+                </button>
+                <button id="next-btn" class="nav-btn">
+                    التالي <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="results-container" id="results-container" style="display: none;">
+            <div class="results-header">
+                <h2>نتيجة الاختبار</h2>
+                <div class="score-container">
+                    <div class="score-circle">
+                        <span id="score-value">0</span>
+                        <span id="score-total">/20</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-message" id="result-message">
+                <!-- Result message will be shown here -->
+            </div>
+
+            <div class="audio-player">
+                <button id="play-result" class="audio-btn">
+                    <i class="fas fa-volume-up"></i> اسمع النتيجة باللهجة المنياوية
+                </button>
+            </div>
+
+            <div class="result-actions">
+                <button id="retry-btn" class="btn">
+                    <i class="fas fa-redo"></i> اختبر نفسك مرة أخرى
+                </button>
+                <button id="share-btn" class="btn secondary">
+                    <i class="fas fa-share-alt"></i> شارك النتيجة
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>محافظة المنيا</h3>
+                <p>بوابة إلكترونية شاملة لخدمة مواطني وزوار محافظة المنيا</p>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ديوان عام محافظة المنيا، المنيا، مصر</p>
+                <p><i class="fas fa-phone"></i> 086-2343001</p>
+                <p><i class="fas fa-envelope"></i> info@minia-portal.gov.eg</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2023 بوابة محافظة المنيا</p>
+        </div>
+    </footer>
+
+    <script src="dialected_quiz.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

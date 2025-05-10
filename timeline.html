@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة الزمن - تاريخ المنيا عبر العصور</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header & Navigation (same across all pages) -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار محافظة المنيا">
+            <h1>محافظة المنيا</h1>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="personalities.html">شخصيات بارزة</a></li>
+                <li><a href="attractions.html">المعالم السياحية</a></li>
+                <li><a href="map.html">خريطة المحافظة</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="schools.html">دليل المدارس</a></li>
+                <li><a href="timeline.html" class="active">آلة الزمن التاريخية</a></li>
+                <li><a href="events.html">الإعلانات والأحداث</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="ابحث في الموقع..." id="site-search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main>
+        <section class="timeline-header">
+            <h1>آلة الزمن - تاريخ المنيا عبر العصور</h1>
+            <p>اكتشف تاريخ محافظة المنيا الغني عبر العصور المختلفة، من عصور ما قبل الأسرات إلى العصر الحديث والمعاصر. تعرف على مواقع المنيا الأثرية الفريدة وشخصياتها البارزة والثقافات المتعاقبة التي شكلت هويتها المميزة عبر آلاف السنين.</p>
+        </section>
+
+        <section class="timeline-controls">
+            <div class="timeline-search">
+                <input type="text" id="timeline-search-input" placeholder="ابحث في التاريخ...">
+                <button id="timeline-search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="timeline-filters">
+                <select id="filter-type">
+                    <option value="all">جميع الأنواع</option>
+                    <option value="location">المواقع</option>
+                    <option value="personality">الشخصيات</option>
+                    <option value="event">الأحداث</option>
+                </select>
+                
+                <select id="filter-period">
+                    <option value="all">جميع العصور</option>
+                    <option value="prehistoric">عصور ما قبل الأسرات</option>
+                    <option value="pharaonic">العصر الفرعوني</option>
+                    <option value="greek">العصر اليوناني-الروماني</option>
+                    <option value="coptic">العصر القبطي</option>
+                    <option value="islamic">العصر الإسلامي</option>
+                    <option value="modern">العصر الحديث والمعاصر</option>
+                </select>
+            </div>
+            
+            <div class="timeline-actions">
+                <button id="download-pdf" class="action-btn">
+                    <i class="fas fa-download"></i> تحميل PDF
+                </button>
+                <button id="toggle-map" class="action-btn secondary">
+                    <i class="fas fa-map"></i> الخريطة التاريخية
+                </button>
+            </div>
+        </section>
+
+        <section class="timeline-bar">
+            <div class="timeline-line"></div>
+            <div class="timeline-periods">
+                <div class="period-marker" data-period="prehistoric">
+                    <div class="marker"></div>
+                    <div class="period-year">10000 ق.م</div>
+                    <div class="period-name">عصور ما قبل الأسرات</div>
+                </div>
+                
+                <div class="period-marker" data-period="pharaonic">
+                    <div class="marker"></div>
+                    <div class="period-year">3100 - 332 ق.م</div>
+                    <div class="period-name">العصر الفرعوني</div>
+                </div>
+                
+                <div class="period-marker" data-period="greek">
+                    <div class="marker"></div>
+                    <div class="period-year">332 ق.م - 641 م</div>
+                    <div class="period-name">العصر اليوناني-الروماني</div>
+                </div>
+                
+                <div class="period-marker" data-period="coptic">
+                    <div class="marker"></div>
+                    <div class="period-year">300 - 641 م</div>
+                    <div class="period-name">العصر القبطي</div>
+                </div>
+                
+                <div class="period-marker" data-period="islamic">
+                    <div class="marker"></div>
+                    <div class="period-year">641 - 1805 م</div>
+                    <div class="period-name">العصر الإسلامي</div>
+                </div>
+                
+                <div class="period-marker" data-period="modern">
+                    <div class="marker"></div>
+                    <div class="period-year">1805 - الآن</div>
+                    <div class="period-name">العصر الحديث والمعاصر</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-content">
+            <!-- Prehistoric Period -->
+            <div class="period-content" id="prehistoric-content">
+                <div class="period-title">
+                    <i class="period-icon fas fa-campground"></i>
+                    <div>
+                        <h2>عصور ما قبل الأسرات</h2>
+                        <span>10000 ق.م - 3100 ق.م</span>
+                    </div>
+                </div>
+                
+                <div class="period-description">
+                    <p>شهدت أرض المنيا استيطانًا بشريًا قديمًا يمتد لآلاف السنين قبل ظهور الحضارة الفرعونية، حيث وُجدت أدوات حجرية تدل على حياة بدائية. كان البشر الأوائل يعيشون في المنطقة على ضفاف النيل ويمارسون نشاطات الصيد وجمع الثمار، ثم بدأوا في تطوير أدوات حجرية بسيطة.</p>
+                    <p>مع مرور الزمن، تطورت المجتمعات البشرية في المنطقة وبدأت في استقرار نسبي قرب النهر وتطوير الزراعة البدائية. كما ظهرت بعض المهارات الحرفية البسيطة مثل صناعة الفخار والأدوات الحجرية المتطورة.</p>
+                    
+                    <button class="audio-button" data-content="prehistoric">
+                        <i class="fas fa-volume-up"></i> استمع إلى هذا العصر
+                    </button>
+                </div>
+                
+                <h3 class="section-subtitle">المواقع المهمة</h3>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <img src="tuna-elgabal.png" alt="تل بني حسن" class="location-image">
+                        <div class="location-content">
+                            <h4 class="location-name">تل بني حسن</h4>
+                            <p class="location-description">موقع أثري يحتوي على أدوات حجرية ومستوطنات بدائية تعود لعصور ما قبل الأسرات.</p>
+                            <button class="view-3d-btn" data-location="beni-hassan-prehistoric">
+                                <i class="fas fa-cube"></i> استكشاف ثلاثي الأبعاد
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <img src="tuna-elgabal.png" alt="منطقة البدرمان" class="location-image">
+                        <div class="location-content">
+                            <h4 class="location-name">منطقة البدرمان</h4>
+                            <p class="location-description">منطقة كانت مستوطنة قديمة للصيادين القدماء، عُثر فيها على أدوات حجرية وبقايا عظام حيوانات.</p>
+                            <button class="view-3d-btn" data-location="badraman">
+                                <i class="fas fa-cube"></i> استكشاف ثلاثي الأبعاد
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <img src="tuna-elgabal.png" alt="مناطق الصحراء الشرقية" class="location-image">
+                        <div class="location-content">
+                            <h4 class="location-name">مناطق الصحراء الشرقية</h4>
+                            <p class="location-description">تحتوي على نقوش صخرية بدائية ورسومات تعود لآلاف السنين، تصور مشاهد الصيد والحياة اليومية.</p>
+                            <button class="view-3d-btn" data-location="eastern-desert">
+                                <i class="fas fa-cube"></i> استكشاف ثلاثي الأبعاد
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">الأنشطة الحياتية</h3>
+                <ul class="activities-list">
+                    <li>الصيد البدائي باستخدام الأدوات الحجرية.</li>
+                    <li>جمع النباتات والثمار البرية للغذاء.</li>
+                    <li>بداية الزراعة البسيطة قرب ضفاف النيل.</li>
+                    <li>صناعة الأدوات الحجرية وتطويرها.</li>
+                    <li>العيش في مستوطنات بسيطة من الأكواخ الطينية.</li>
+                </ul>
+                
+                <h3 class="section-subtitle">معلومات مميزة</h3>
+                <div class="facts-list">
+                    <div class="fact-item">
+                        اكتُشفت نقوش على جدران الكهوف في صحراء المنيا الشرقية تعود لأكثر من 10 آلاف سنة، وتوثق حياة البشر الأوائل في المنطقة.
+                    </div>
+                    <div class="fact-item">
+                        أظهرت الدراسات الأثرية أن سكان المنيا القدماء كانوا يتاجرون مع المناطق المجاورة وينقلون البضائع عبر نهر النيل منذ أكثر من 7 آلاف سنة.
+                    </div>
+                    <div class="fact-item">
+                        عُثر على مقابر بدائية في المنطقة تحتوي على هياكل عظمية وأدوات حجرية، مما يدل على بداية ظهور الطقوس الجنائزية قبل العصر الفرعوني.
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">معرض الصور</h3>
+                <div class="gallery">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="tuna-elgabal.png" alt="أدوات حجرية" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="tuna-elgabal.png" alt="نقوش صخرية" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="tuna-elgabal.png" alt="مستوطنة بدائية" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="tuna-elgabal.png" alt="هياكل عظمية" class="gallery-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">المصادر</h3>
+                <div class="sources-list">
+                    <div class="source-item">
+                        <i class="fas fa-book source-icon"></i>
+                        <a href="#" class="source-link">Midant-Reynes, B. (2000). The Prehistory of Egypt: From the First Egyptians to the First Pharaohs</a>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-book source-icon"></i>
+                        <a href="#" class="source-link">Hendrickx, S., & Vermeersch, P. (2000). Prehistory: From the Palaeolithic to the Badarian Culture</a>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-globe source-icon"></i>
+                        <a href="#" class="source-link">المجلس الأعلى للآثار - تقارير الحفريات في المنيا</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pharaonic Period -->
+            <div class="period-content" id="pharaonic-content">
+                <div class="period-title">
+                    <i class="period-icon fas fa-landmark"></i>
+                    <div>
+                        <h2>العصر الفرعوني</h2>
+                        <span>3100 ق.م - 332 ق.م</span>
+                    </div>
+                </div>
+                
+                <div class="period-description">
+                    <p>المنيا كانت إقليم "خمنو" في الدولة القديمة، وكانت مركزًا مهمًا لعبادة الإله "تحوت" إله الحكمة والكتابة. ثم أصبحت من أهم المراكز الدينية والسياسية في عصر الدولة الحديثة، خاصة خلال عهد الملك إخناتون الذي أسس عاصمته أخيتاتون (تل العمارنة الحالي) في المنيا.</p>
+                    <p>شهدت المنيا خلال العصر الفرعوني ازدهارًا كبيرًا في العمارة والفنون، وترك الفراعنة مقابر ومعابد رائعة منحوتة في الصخر تحكي قصة حضارتهم العظيمة. كما كانت المنطقة مركزًا حيويًا للتجارة والزراعة بفضل موقعها المتميز على نهر النيل.</p>
+                    
+                    <button class="audio-button" data-content="pharaonic">
+                        <i class="fas fa-volume-up"></i> استمع إلى هذا العصر
+                    </button>
+                </div>
+                
+                <h3 class="section-subtitle">المواقع المهمة</h3>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <img src="tell-elamarna.png" alt="تل العمارنة" class="location-image">
+                        <div class="location-content">
+                            <h4 class="location-name">تل العمارنة (أخيتاتون)</h4>
+                            <p class="location-description">عاصمة الملك أخناتون، تضم قصورًا ومعابد ومقابر ملكية ولوحات حدودية تخلد ذكرى الديانة التوحيدية.</p>
+                            <button class="view-3d-btn" data-location="amarna">
+                                <i class="fas fa-cube"></i> استكشاف ثلاثي الأبعاد
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <img src="tuna-elgabal.png" alt="تونة الجبل" class="location-image">
+                        <div class="location-content">
+                            <h4 class="location-name">تونة الجبل</h4>
+                            <p class="location-description">تضم مقابر الكهنة وبيت الإيبيت وسراديب دفن الطيور المقدسة، وهي امتداد لجبانة أخيتاتون.</p>
+                            <button class="view-3d-btn" data-location="tuna-el-gebel">
+                                <i class="fas fa-cube"></i> استكشاف ثلاثي الأبعاد
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <img src="beni-hassan.png" alt="بني حسن" class="location-image">
+                        <div class="location-content">
+                            <h4 class="location-name">بني حسن</h4>
+                            <p class="location-description">مقابر حكام الإقليم السادس عشر خلال عصر الدولة الوسطى، تشتهر بنقوشها الملونة التي تصور مشاهد الحياة اليومية والرياضة.</p>
+                            <button class="view-3d-btn" data-location="beni-hassan">
+                                <i class="fas fa-cube"></i> استكشاف ثلاثي الأبعاد
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <img src="ashmunein.png" alt="الأشمونين" class="location-image">
+                        <div class="location-content">
+                            <h4 class="location-name">الأشمونين</h4>
+                            <p class="location-description">مركز عبادة الإله تحوت، وكانت تسمى "خمنو" في العصر الفرعوني، وتضم أطلال معابد وتماثيل ضخمة.</p>
+                            <button class="view-3d-btn" data-location="ashmunein">
+                                <i class="fas fa-cube"></i> استكشاف ثلاثي الأبعاد
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">الشخصيات البارزة</h3>
+                <div class="personalities-list">
+                    <div class="personality-item">
+                        <img src="taha-hussein.png" alt="أخناتون" class="personality-image">
+                        <div class="personality-info">
+                            <h4 class="personality-name">أخناتون (أمنحتب الرابع)</h4>
+                            <p class="personality-role">فرعون مصر من الأسرة الثامنة عشرة، دعا إلى عبادة إله واحد هو آتون، وأسس مدينة أخيتاتون في المنيا.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="personality-item">
+                        <img src="hoda-shaarawi.png" alt="نفرتيتي" class="personality-image">
+                        <div class="personality-info">
+                            <h4 class="personality-name">نفرتيتي</h4>
+                            <p class="personality-role">زوجة أخناتون، وملكة مصر خلال الأسرة الثامنة عشرة، عاشت في أخيتاتون وكان لها دور في نشر عبادة آتون.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="personality-item">
+                        <img src="walid-soliman.png" alt="باخت الأول" class="personality-image">
+                        <div class="personality-info">
+                            <h4 class="personality-name">باخت الأول</h4>
+                            <p class="personality-role">حاكم الإقليم السادس عشر خلال عصر الدولة الوسطى، له مقبرة منحوتة في الصخر في بني حسن.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="personality-item">
+                        <img src="ammar-elsherei.png" alt="أمنمحات الثاني" class="personality-image">
+                        <div class="personality-info">
+                            <h4 class="personality-name">أمنمحات الثاني</h4>
+                            <p class="personality-role">فرعون مصر من الأسرة الثانية عشرة، اهتم بمنطقة المنيا وأقام فيها مشاريع عمرانية.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">الأنشطة الحياتية</h3>
+                <ul class="activities-list">
+                    <li>بناء المعابد والمقابر المنحوتة في الصخر.</li>
+                    <li>الزراعة المتطورة على ضفاف النيل، خاصة القمح والشعير والكتان.</li>
+                    <li>التجارة مع الواحات الصحراوية والمناطق البعيدة عبر طرق القوافل.</li>
+                    <li>الفنون المختلفة كالرسم والنحت والموسيقى.</li>
+                    <li>صناعة البرديات والكتابة الهيروغليفية.</li>
+                </ul>
+                
+                <h3 class="section-subtitle">معلومات مميزة</h3>
+                <div class="facts-list">
+                    <div class="fact-item">
+                        تحتوي مقابر بني حسن على أقدم رسومات رياضية معروفة في التاريخ، توثق المصارعة والجمباز والألعاب الجماعية قبل 4000 عام.
+                    </div>
+                    <div class="fact-item">
+                        في تل العمارنة اكتشفت "رسائل العمارنة" وهي مجموعة من الألواح الطينية المكتوبة بالخط المسماري تمثل مراسلات دولية بين مصر ودول الشرق القديم.
+                    </div>
+                    <div class="fact-item">
+                        كان للمنيا دور كبير في ثورة إخناتون الدينية، حيث اختار هذه المنطقة لبناء عاصمته الجديدة بعيدًا عن نفوذ كهنة آمون في طيبة.
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">معرض الصور</h3>
+                <div class="gallery">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="tell-elamarna.png" alt="تمثال أخناتون" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="beni-hassan.png" alt="نقوش بني حسن" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="tuna-elgabal.png" alt="مقبرة بيتوزيريس" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="ashmunein.png" alt="معبد تحوت" class="gallery-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">المصادر</h3>
+                <div class="sources-list">
+                    <div class="source-item">
+                        <i class="fas fa-book source-icon"></i>
+                        <a href="#" class="source-link">Kemp, B. (2012). The City of Akhenaten and Nefertiti: Amarna and Its People</a>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-book source-icon"></i>
+                        <a href="#" class="source-link">Newberry, P. E. (1893). Beni Hasan (Archaeological Survey of Egypt)</a>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-globe source-icon"></i>
+                        <a href="#" class="source-link">هيئة الآثار المصرية - مواقع محافظة المنيا الأثرية</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More periods would follow similar structure -->
+            <!-- Greek-Roman Period -->
+            <!-- Coptic Period -->
+            <!-- Islamic Period -->
+            <!-- Modern Period -->
+        </section>
+        
+        <section class="timeline-map" id="timeline-map" style="display: none;">
+            <!-- Map will be initialized here by JavaScript -->
+        </section>
+        
+        <section class="feedback-section">
+            <h3>شاركنا رأيك</h3>
+            <p class="feedback-question">كيف تقيم تجربتك مع آلة الز门 التاريخية؟</p>
+            <div class="rating-stars">
+                <i class="fas fa-star star" data-rating="1"></i>
+                <i class="fas fa-star star" data-rating="2"></i>
+                <i class="fas fa-star star" data-rating="3"></i>
+                <i class="fas fa-star star" data-rating="4"></i>
+                <i class="fas fa-star star" data-rating="5"></i>
+            </div>
+            <textarea class="feedback-comment" placeholder="أخبرنا بتعليقك أو اقتراحاتك لتحسين الموقع..."></textarea>
+            <button class="submit-feedback">إرسال التقييم</button>
+        </section>
+    </main>
+
+    <!-- 3D Viewer Modal -->
+    <div class="modal-3d" id="modal-3d">
+        <div class="modal-3d-content">
+            <span class="close-3d-modal">&times;</span>
+            <iframe id="viewer-3d" class="viewer-3d" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+    
+    <!-- Audio Player -->
+    <div class="audio-player" id="audio-player">
+        <div class="audio-controls">
+            <button class="play-pause" id="play-pause"><i class="fas fa-play"></i></button>
+            <button class="stop-audio" id="stop-audio"><i class="fas fa-stop"></i></button>
+        </div>
+        <span class="audio-title" id="audio-title">العصر الفرعوني</span>
+    </div>
+
+    <!-- Footer (same across all pages) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>محافظة المنيا</h3>
+                <p>بوابة إلكترونية شاملة لخدمة مواطني وزوار محافظة المنيا</p>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ديوان عام محافظة المنيا، المنيا، مصر</p>
+                <p><i class="fas fa-phone"></i> 086-2343001</p>
+                <p><i class="fas fa-envelope"></i> info@minia-portal.gov.eg</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2023 بوابة محافظة المنيا</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="timeline.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

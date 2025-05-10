@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنيا توظف - منصة التوظيف الذكية لأبناء المنيا</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="jobs.css">
+</head>
+<body>
+    <!-- Header & Navigation (same as other pages) -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار محافظة المنيا">
+            <h1>محافظة المنيا</h1>
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="personalities.html">شخصيات بارزة</a></li>
+                <li><a href="attractions.html">المعالم السياحية</a></li>
+                <li><a href="map.html">خريطة المحافظة</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="schools.html">دليل المدارس</a></li>
+                <li><a href="timeline.html">آلة الزمن التاريخية</a></li>
+                <li><a href="jobs.html" class="active">المنيا توظف</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="ابحث في الموقع..." id="site-search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>المنيا توظف - منصة التوظيف الذكية لأبناء المنيا</h1>
+            <p class="intro-text">
+                سجّل بياناتك الأساسية واكتشف الوظائف المناسبة لك فوراً. نساعدك في العثور على الفرص المتاحة في محافظة المنيا بناءً على مؤهلاتك وموقعك الجغرافي.
+            </p>
+        </section>
+
+        <div class="jobs-content">
+            <section class="registration-section" id="registration-section">
+                <h2>سجّل بياناتك</h2>
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="fullname">الاسم الكامل</label>
+                        <input type="text" id="fullname" name="fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">رقم الهاتف أو البريد الإلكتروني</label>
+                        <input type="text" id="contact" name="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="qualification">المؤهل العلمي أو المهني</label>
+                        <input type="text" id="qualification" name="qualification" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">المحافظة/المركز/القرية</label>
+                        <select id="location" name="location" required>
+                            <option value="" disabled selected>اختر المركز</option>
+                            <option value="المنيا-المدينة">المنيا (المدينة)</option>
+                            <option value="المنيا-الجديدة">المنيا الجديدة</option>
+                            <option value="ملوي">ملوي</option>
+                            <option value="سمالوط">سمالوط</option>
+                            <option value="مطاي">مطاي</option>
+                            <option value="بني-مزار">بني مزار</option>
+                            <option value="مغاغة">مغاغة</option>
+                            <option value="دير-مواس">دير مواس</option>
+                            <option value="أبو-قرقاص">أبو قرقاص</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-type">نوع الفرصة المطلوبة</label>
+                        <select id="job-type" name="job-type">
+                            <option value="all">الكل</option>
+                            <option value="job">وظيفة</option>
+                            <option value="training">تدريب</option>
+                            <option value="financial-support">دعم مالي</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary" id="show-jobs-btn">اعرض الوظائف المناسبة</button>
+                </form>
+            </section>
+
+            <section class="results-section" id="results-section" style="display: none;">
+                <div class="results-header">
+                    <h2>الوظائف المناسبة لك</h2>
+                    <div class="results-controls">
+                        <button id="refresh-search" class="btn-secondary"><i class="fas fa-sync-alt"></i> أعد البحث</button>
+                        <button id="save-favorites" class="btn-secondary"><i class="fas fa-bookmark"></i> حفظ الوظائف المفضلة</button>
+                    </div>
+                </div>
+                
+                <div class="search-filters">
+                    <div class="search-box">
+                        <input type="text" id="job-search" placeholder="ابحث في النتائج...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="filter-options">
+                        <label for="field-filter">تصفية حسب المجال:</label>
+                        <select id="field-filter">
+                            <option value="all">الكل</option>
+                            <option value="technology">تكنولوجيا</option>
+                            <option value="medical">طب</option>
+                            <option value="technical">فني</option>
+                            <option value="education">تعليم</option>
+                            <option value="women-only">نساء فقط</option>
+                            <option value="training">تدريب</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="jobs-list" id="jobs-list">
+                    <!-- Jobs will be loaded dynamically -->
+                </div>
+                
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be added if needed -->
+                </div>
+                
+                <div class="no-results" id="no-results" style="display: none;">
+                    <i class="fas fa-search fa-3x"></i>
+                    <h3>لم نعثر على وظائف مطابقة</h3>
+                    <p>يرجى تعديل معايير البحث أو تغيير المؤهلات للحصول على نتائج أفضل.</p>
+                </div>
+            </section>
+        </div>
+        
+        <div class="notification-section">
+            <h3>احصل على إشعارات بالوظائف الجديدة</h3>
+            <p>سنرسل لك إشعارًا عند توفر وظائف جديدة تناسب مؤهلاتك وموقعك الجغرافي.</p>
+            <div class="notification-options">
+                <label>
+                    <input type="checkbox" id="notification-sms" checked> عبر الرسائل النصية
+                </label>
+                <label>
+                    <input type="checkbox" id="notification-email" checked> عبر البريد الإلكتروني
+                </label>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same as other pages) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>محافظة المنيا</h3>
+                <p>بوابة إلكترونية شاملة لخدمة مواطني وزوار محافظة المنيا</p>
+            </div>
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> ديوان عام محافظة المنيا، المنيا، مصر</p>
+                <p><i class="fas fa-phone"></i> 086-2343001</p>
+                <p><i class="fas fa-envelope"></i> info@minia-portal.gov.eg</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2023 بوابة محافظة المنيا</p>
+        </div>
+    </footer>
+
+    <script src="jobs.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
